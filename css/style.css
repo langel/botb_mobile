@@ -1,0 +1,19 @@
+
+.tabs-positive > .tabs {
+	color: #ddd;
+	background-color: #222;
+	border-color: #888;
+	background: rgba(0,0,0,1);
+	background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(17,17,17,1) 10%, rgba(33,33,33,1) 42%, rgba(28,28,28,1) 92%, rgba(28,28,28,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(10%, rgba(17,17,17,1)), color-stop(42%, rgba(33,33,33,1)), color-stop(92%, rgba(28,28,28,1)), color-stop(100%, rgba(28,28,28,1)));
+	background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(17,17,17,1) 10%, rgba(33,33,33,1) 42%, rgba(28,28,28,1) 92%, rgba(28,28,28,1) 100%);
+	background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(17,17,17,1) 10%, rgba(33,33,33,1) 42%, rgba(28,28,28,1) 92%, rgba(28,28,28,1) 100%);
+	background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(17,17,17,1) 10%, rgba(33,33,33,1) 42%, rgba(28,28,28,1) 92%, rgba(28,28,28,1) 100%);
+	background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(17,17,17,1) 10%, rgba(33,33,33,1) 42%, rgba(28,28,28,1) 92%, rgba(28,28,28,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#1c1c1c', GradientType=0 );
+}
+
+.entry-format-icon {
+	position: relative;
+	top: 4px;
+}
