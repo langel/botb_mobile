@@ -1,0 +1,20 @@
+<ion-view view-title="Battle Profile">
+	<ion-content>
+		<div class="padding">
+			<h3 class="title">{{battle.title}}</h3>
+		</div>
+		<ion-list>
+			<ion-item class="item item-icon-right" ng-href="#/tab/battle/entries/{{battle.id}}">
+				<img class="battle-format-icon" ng-src="{{battle.format.icon_url}}">
+				{{battle.entry_count}} entries 
+				<i class="icon ion-chevron-right icon-accessory"></i>
+			</ion-item>
+		</ion-list>
+		<div class="card">
+			<div class="item item-image">
+				<img class="full-image" ng-src="{{battle.cover_art_url}}">
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
+

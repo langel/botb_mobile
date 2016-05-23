@@ -1,0 +1,20 @@
+<ion-view view-title="Recent Battles">
+	<ion-content>
+		<ion-list>
+			<ion-item class="item-thumbnail-left item-icon-right" ng-repeat="battle in battles.items" type="item-text-wrap" href="#/tab/battle/profile/{{battle.id}}">
+				<img ng-src="{{battle.cover_art_url}}">
+				<h2>{{battle.title}}</h2>
+				<p>
+					<img class="battle-format-icon" ng-src="{{battle.format.icon_url}}">
+					{{battle.entry_count}} entries 
+				</p>
+				<i class="icon ion-chevron-right icon-accessory"></i>
+			</ion-item>
+		</ion-list>
+		<ion-infinite-scroll 
+			on-infinite="battles.load_items()" 
+			ng-if="battles.more" 
+			distance="20%">
+		</ion-infinite-scroll>
+	</ion-content>
+</ion-view>

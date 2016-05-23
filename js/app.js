@@ -1,7 +1,12 @@
 // Ionic Battle of the Bits Mobile App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-angular.module('botb_mobile', ['ionic', 'botb_mobile.controllers', 'botb_mobile.services'])
+angular
+.module('botb_mobile', [
+	'ionic', 
+	'botb_mobile.controllers', 
+	'botb_mobile.services'
+])
 
 .run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -19,7 +24,10 @@ angular.module('botb_mobile', ['ionic', 'botb_mobile.controllers', 'botb_mobile.
 	});
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+
+	// default home screen	
+	$urlRouterProvider.otherwise('/tab/dash');
 
 	// Ionic uses AngularUI Router which uses the concept of states
 	// Learn more here: https://github.com/angular-ui/ui-router
@@ -27,9 +35,15 @@ angular.module('botb_mobile', ['ionic', 'botb_mobile.controllers', 'botb_mobile.
 	// Each state's controller can be found in controllers.js
 	$stateProvider
 
+	.state('scaffold', {
+		abstract: true,
+		templateUrl: "templates/scaffold.html"
+	})
+
 	// setup an abstract state for the tabs directive
-		.state('tab', {
+	.state('tab', {
 		url: '/tab',
+		parent: 'scaffold',
 		abstract: true,
 		templateUrl: 'templates/tabs.html'
 	})
@@ -46,25 +60,84 @@ angular.module('botb_mobile', ['ionic', 'botb_mobile.controllers', 'botb_mobile.
 		}
 	})
 
-	.state('tab.battles-recent', {
-		url: '/battles-recent',
+
+	.state('tab.battle-home', {
+		url: '/battle',
 		views: {
-			'tab-battles-recent': {
-				templateUrl: 'templates/tab-battles-recent.html',
-				controller: 'battles-recent',
+			'battle': {
+				templateUrl: 'templates/battle/recent.html',
+				controller: 'battle-recent'
+			}
+		}
+	})
+	.state('tab.battle-profile', {
+		url: '/battle/profile/:battle_id',
+		views: {
+			'battle': {
+				templateUrl: 'templates/battle/profile.html',
+				controller: 'battle-profile'
+			}
+		}
+	})
+	.state('tab.battle-entry', {
+		url: '/battle/entry/:entry_id',
+		views: {
+			'battle': {
+				templateUrl: 'templates/entry/profile.html',
+				controller: 'entry-profile',
+			}
+		},
+		data: {
+			api_botbr_url: 'battle/botbr'
+		}
+	})
+	.state('tab.battle-botbr', {
+		url: '/battle/botbr/:botbr_id',
+		views: {
+			'battle': {
+				templateUrl: 'templates/botbr/profile.html',
+				controller: 'botbr-profile',
 			}
 		}
 	})
 
-	.state('tab.entries-recent', {
-		url: '/entries-recent',
+	.state('tab.entry-recent', {
+		url: '/entry/recent',
 		views: {
-			'tab-entries-recent': {
-			templateUrl: 'templates/tab-entries-recent.html',
-			controller: 'entries-recent',
+			'entry': {
+				templateUrl: 'templates/entry/recent.html',
+				controller: 'entry-recent',
 			}
 		}
 	})
+	.state('tab.entry-profile', {
+		url: '/entry/profile/:entry_id',
+		views: {
+			'entry': {
+				templateUrl: 'templates/entry/profile.html',
+				controller: 'entry-profile',
+			}
+		}
+	})
+	.state('tab.entry-botbr', {
+		url: '/entry/botbr/:botbr_id',
+		views: {
+			'entry': {
+				templateUrl: 'templates/botbr/profile.html',
+				controller: 'botbr-profile',
+			}
+		}
+	})
+	.state('tab.entry-format', {
+		url: '/entry/format/:format_token',
+		views: {
+			'entry': {
+				templateUrl: 'templates/format/profile.html',
+				controller: 'format-profile',
+			}
+		}
+	})
+
 
 	.state('tab.chats', {
 		url: '/chats',
@@ -96,6 +169,5 @@ angular.module('botb_mobile', ['ionic', 'botb_mobile.controllers', 'botb_mobile.
 	});
 
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/tab/dash');
 
-});
+}]);

@@ -28,7 +28,7 @@ angular.module('botb_mobile.services', ['ngResource'])
 })
 
 .factory('ordinal_suffix', function() {
-	return function(n) {
+	ordinal_suffix.process = function(n) {
 		var j = n % 10;
 		var k = n % 100;
 		if (j == 1 && k != 11) {
@@ -73,6 +73,25 @@ angular.module('botb_mobile.services', ['ngResource'])
 	};
 })
 
+.service('api_caller', ['$http', function($http) {
+	var url_base = 'http://battleofthebits.org/api/v1/';
+	this.load = function(object_type, object_id) {
+		return $http.get(url_base + object_type + '/load/' + object_id);
+	};
+}])
+
+/*
+		.error(function() {
+			let alert_msg = Alert.create({
+				title: 'Failz0hrz Err0Hrz',
+				message: 'SANTYX ERROR ::| Could not load type "' + type + '" with id "' + id + '"',
+				buttons: ['Dismiss']
+			});
+			this.nav.present(alert_msg);
+		});
+	}
+})
+*/
 .factory('Chats', function() {
 
   return {

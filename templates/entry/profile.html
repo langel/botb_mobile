@@ -1,0 +1,11 @@
+<ion-view view-title="Entry">
+	<ion-content>
+		<h3>{{entry.title}}</h3>
+		<ion-list>
+			<ion-item class="item-avatar item-icon-right" href="#/tab/{{api_botbr_url}}/{{entry.botbr.id}}">
+				<img ng-src="{{entry.botbr.avatar_url}}">
+				<h2>{{entry.botbr.name}}</h2>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
