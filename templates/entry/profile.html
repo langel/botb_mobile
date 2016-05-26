@@ -1,10 +1,21 @@
 <ion-view view-title="Entry">
 	<ion-content>
-		<h3>{{entry.title}}</h3>
+		<div class="padding">
+			<h2>{{entry.title}}</h2>
+			<span ng-bind-html="entry.trophy_display"></span>
+			&emsp;
+			<span ng-bind-html="entry.rank_display"></span>
+			&emsp;
+			<span ng-bind-html="entry.score_display"></span>
+		</div>
 		<ion-list>
 			<ion-item class="item-avatar item-icon-right" href="#/tab/{{api_botbr_url}}/{{entry.botbr.id}}">
-				<img ng-src="{{entry.botbr.avatar_url}}">
-				<h2>{{entry.botbr.name}}</h2>
+				<div class="item-avatar-container" style="background-color:{{entry.botbr.aura_color}}">
+					<img ng-src="{{entry.botbr.avatar_url}}">	
+				</div>
+				<h3>{{entry.botbr.name}}</h3>
+				Level {{entry.botbr.level}} {{entry.botbr.class}}
+				<i class="icon ion-chevron-right icon-accessory"></i>
 			</ion-item>
 		</ion-list>
 	</ion-content>

@@ -27,24 +27,23 @@ angular.module('botb_mobile.services', ['ngResource'])
 	return api_resource;
 })
 
-.factory('ordinal_suffix', function() {
-	ordinal_suffix.process = function(n) {
-		var j = n % 10;
-		var k = n % 100;
-		if (j == 1 && k != 11) {
-			return n + "st";
-		}
-		if (j == 2 && k != 12) {
-			return n + "nd";
-		}
-		if (j == 3 && k != 13) {
-			return n + "rd";
-		}
-		return n + "th";
+.service('spriteshit_loader', ['$http', '$rootScope', function($http, $rootScope) {
+	this.init = function() {
+		$http.get($rootScope.api_base + 'spriteshit/version')
+		.success(function(data) {
+			// insert CSS
+			console.log(data);
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = $rootScope.botb_base + 'styles/spriteshit/' + data.spriteshit_version + '.css';
+			angular.element(document.querySelector('head')).append(link);
+		});
 	}
-})
+}])
 
-.factory('infinite_loader', function($http, $rootScope) {
+
+.factory('infinite_loader', ['$http', '$rootScope', function($http, $rootScope) {
 	return function(query, sort) {
 		return {
 			query: query,
@@ -52,10 +51,9 @@ angular.module('botb_mobile.services', ['ngResource'])
 			page: 0,
 			items: [],
 			more: true,
-			api_url: 'http://battleofthebits.org/api/v1/',
 			load_items: function() {
 				var $this = this;
-				$http.get(this.api_url + query + '/' + this.page + sort)
+				$http.get($rootScope.api_base + query + '/' + this.page + sort)
 				.success(function(items) {
 					angular.forEach(items, function(item) {
 						$this.items.push(item);
@@ -71,12 +69,11 @@ angular.module('botb_mobile.services', ['ngResource'])
 			},
 		};
 	};
-})
+}])
 
-.service('api_caller', ['$http', function($http) {
-	var url_base = 'http://battleofthebits.org/api/v1/';
+.service('api_caller', ['$http', '$rootScope', function($http, $rootScope) {
 	this.load = function(object_type, object_id) {
-		return $http.get(url_base + object_type + '/load/' + object_id);
+		return $http.get($rootScope.api_base + object_type + '/load/' + object_id);
 	};
 }])
 

@@ -1,17 +1,16 @@
 // Ionic Battle of the Bits Mobile App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-angular
-.module('botb_mobile', [
+angular.module('botb_mobile', [
 	'ionic', 
 	'botb_mobile.controllers', 
 	'botb_mobile.services'
 ])
 
-.run(function($ionicPlatform) {
+.run(['$ionicPlatform', '$rootScope', 'spriteshit_loader', function($ionicPlatform, $rootScope, spriteshit_loader) {
+	$rootScope.botb_base = 'http://battleofthebits.org/';
+	$rootScope.api_base = $rootScope.botb_base + 'api/v1/';
 	$ionicPlatform.ready(function() {
-		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-		// for form inputs)
 		if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 			cordova.plugins.Keyboard.disableScroll(true);
@@ -22,7 +21,8 @@ angular
 			StatusBar.styleDefault();
 		}
 	});
-})
+	spriteshit_loader.init();
+}])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
@@ -76,6 +76,15 @@ angular
 			'battle': {
 				templateUrl: 'templates/battle/profile.html',
 				controller: 'battle-profile'
+			}
+		}
+	})
+	.state('tab.battle-entries', {
+		url: '/battle/entries/:battle_id',
+		views: {
+			'battle': {
+				templateUrl: 'templates/entry/list.html',
+				controller: 'battle-entries'
 			}
 		}
 	})
