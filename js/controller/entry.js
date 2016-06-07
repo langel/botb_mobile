@@ -7,7 +7,6 @@ angular.module('botb_mobile.controllers')
 })
 
 
-
 .controller('entry-profile', function($state, $scope, $stateParams, api_caller) {
 	$scope.api_botbr_url = $state.current.data.api_botbr_url;
 	api_caller.load('entry', $stateParams.entry_id)

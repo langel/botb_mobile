@@ -17,3 +17,7 @@
 	position: relative;
 	top: 4px;
 }
+
+body.has_player .tabs {
+	bottom: 44px;
+}

@@ -1,7 +1,7 @@
 <ion-view view-title="Recent Entries">
 	<ion-content>
 		<ion-list>
-			<ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="entry in entries.items" type="item-text-wrap"> <!--  href="#/tab/entry/{{entry.id}}"> -->
+			<ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="entry in entries.items" type="item-text-wrap" href="#/tab/entry/profile/{{entry.id}}">
 				<div class="item-avatar-container" style="background-color:{{entry.botbr.aura_color}}">
 					<img ng-src="{{entry.botbr.avatar_url}}">
 				</div>

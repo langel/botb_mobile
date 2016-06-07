@@ -40,6 +40,13 @@ angular.module('botb_mobile', [
 		templateUrl: "templates/scaffold.html"
 	})
 
+	.state('player', {
+		url: '/player/single/:entry_id',
+		parent: 'scaffold',
+		templateUrl: 'templates/player.html',
+		controller: 'player-single',
+	})
+
 	// setup an abstract state for the tabs directive
 	.state('tab', {
 		url: '/tab',
@@ -126,6 +133,9 @@ angular.module('botb_mobile', [
 				templateUrl: 'templates/entry/profile.html',
 				controller: 'entry-profile',
 			}
+		},
+		data: {
+			api_botbr_url: 'entry/botbr'
 		}
 	})
 	.state('tab.entry-botbr', {

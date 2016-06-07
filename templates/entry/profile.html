@@ -8,12 +8,16 @@
 			&emsp;
 			<span ng-bind-html="entry.score_display"></span>
 		</div>
+		<a class="button button-positive icon-left ion-play" href="#/player/single/{{entry.id}}">
+			play now
+		</a>
 		<ion-list>
 			<ion-item class="item-avatar item-icon-right" href="#/tab/{{api_botbr_url}}/{{entry.botbr.id}}">
 				<div class="item-avatar-container" style="background-color:{{entry.botbr.aura_color}}">
 					<img ng-src="{{entry.botbr.avatar_url}}">	
 				</div>
 				<h3>{{entry.botbr.name}}</h3>
+				<span ng-bind-html="entry.botbr.class_icon"></span>
 				Level {{entry.botbr.level}} {{entry.botbr.class}}
 				<i class="icon ion-chevron-right icon-accessory"></i>
 			</ion-item>

@@ -14,6 +14,19 @@ angular.module('botb_mobile.controllers', [])
 	});
 })
 
+.controller('tabs-control', function($scope, $ionicTabsDelegate) {
+	$scope.goHome = function() {
+		$ionicTabsDelegate.$getByHandle('botb-tabs');
+		$ionicTabsDelegate.$getByHandle('botb-tabs').selectedIndex();
+		$ionicTabsDelegate.$getByHandle('botb-tabs').select(0);
+	}  
+})
+
+
+.controller('player-single', function($scope, $state) {
+	console.log('poop');
+	console.log($state);
+})
 
 
 .controller('AccountCtrl', function($scope) {
