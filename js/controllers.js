@@ -15,10 +15,13 @@ angular.module('botb_mobile.controllers', [])
 })
 
 .controller('tabs-control', function($scope, $ionicTabsDelegate) {
+	console.log('asdasdasd');
 	$scope.goHome = function() {
-		$ionicTabsDelegate.$getByHandle('botb-tabs');
-		$ionicTabsDelegate.$getByHandle('botb-tabs').selectedIndex();
-		$ionicTabsDelegate.$getByHandle('botb-tabs').select(0);
+		//$ionicTabsDelegate.$getByHandle('botb-tabs');
+		//$ionicTabsDelegate.$getByHandle('botb-tabs').selectedIndex();
+//		$ionicTabsDelegate.$getByHandle('botb-tabs').select(0);
+		console.log('tab click');
+		console.log($ionicTabsDelegate.$getByHandle('botb-tabs'));
 	}  
 })
 
