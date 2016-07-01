@@ -3,6 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 angular.module('botb_mobile', [
 	'ionic', 
+	'ngCordova',
 	'botb_mobile.controllers', 
 	'botb_mobile.services'
 ])

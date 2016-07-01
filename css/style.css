@@ -21,3 +21,10 @@
 body.has_player .tabs {
 	bottom: 44px;
 }
+
+.pixel_art {
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: pixelated;
+}
+

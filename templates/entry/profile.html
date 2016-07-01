@@ -8,9 +8,6 @@
 			&emsp;
 			<span ng-bind-html="entry.score_display"></span>
 		</div>
-		<a class="button button-positive icon-left ion-play" href="#/player/single/{{entry.id}}">
-			play now
-		</a>
 		<ion-list>
 			<ion-item class="item-avatar item-icon-right" href="#/tab/{{api_botbr_url}}/{{entry.botbr.id}}">
 				<div class="item-avatar-container" style="background-color:{{entry.botbr.aura_color}}">
@@ -22,5 +19,17 @@
 				<i class="icon ion-chevron-right icon-accessory"></i>
 			</ion-item>
 		</ion-list>
+		<div ng-if="entry.medium == 0">
+			<a class="button button-positive icon-left ion-play" href="#/player/single/{{entry.id}}">
+				play now
+			</a>
+		</div>
+		<div ng-if="entry.medium == 1">
+			<div class="card">
+				<div class="item item-image">
+					<img ng-src="http://battleofthebits.org/player/Preview/{{entry.id}}/" ng-class="(entry.bit==0) ? 'pixel_art' : ''">	
+				</div>
+			</div>
+		</div>
 	</ion-content>
 </ion-view>
