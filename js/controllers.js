@@ -2,18 +2,6 @@ angular.module('botb_mobile.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('EntryCtrl', function($scope, $http) {
-	$http({
-		method: 'GET',
-		url: 'http://battleofthebits.org/api/v1/entry/list/battle_id/666?sort_by=score&desc=true'
-	}).then(function successCallback(response) {
-		$scope.entry_list = response.data;
-		console.log(response);
-	}, function errorCallback(response) {
-		console.log(response);
-	});
-})
-
 .controller('tabs-control', function($scope, $ionicTabsDelegate) {
 	console.log('asdasdasd');
 	$scope.goHome = function() {
@@ -25,12 +13,15 @@ angular.module('botb_mobile.controllers', [])
 	}  
 })
 
-
-.controller('player-single', function($scope, $state) {
-	console.log('poop');
-	console.log($state);
+.controller('player-single', function($scope, $stateParams, api_caller, player) {
+	$scope.player = player;
+	api_caller.load('entry', $stateParams.entry_id)
+	.then(function(response) {
+		$scope.entry = response.data;
+		console.log(response.data);
+	});
+	console.log('player controller loaded');
 })
-
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {

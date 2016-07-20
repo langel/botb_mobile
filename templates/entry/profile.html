@@ -20,7 +20,7 @@
 			</ion-item>
 		</ion-list>
 		<div ng-if="entry.medium == 0">
-			<a class="button button-positive icon-left ion-play" href="#/player/single/{{entry.id}}">
+			<a class="button button-positive icon-left ion-play" ng-click="player.single(entry.id)">
 				play now
 			</a>
 		</div>

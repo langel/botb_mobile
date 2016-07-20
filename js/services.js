@@ -27,6 +27,14 @@ angular.module('botb_mobile.services', ['ngResource'])
 	return api_resource;
 })
 
+.service('player', ['$http', '$rootScope', '$location', function ($http, $rootScope, $location) {
+	this.single = function(entry_id) {
+		console.log('loading track?');
+		console.log(entry_id);
+		$location.path('/player/single/' + entry_id);
+	};
+}])
+
 .service('spriteshit_loader', ['$http', '$rootScope', function($http, $rootScope) {
 	this.init = function() {
 		$http.get($rootScope.api_base + 'spriteshit/version')
