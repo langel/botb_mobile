@@ -13,3 +13,7 @@ replace the www directory with a softlink to this repo
 Media Player requirements --
 bower install ngCordova
 cordova plugin add cordova-plugin-media
+
+moar libs --
+cordova plugin add cordova-plugin-nativeaudio
+cordova plugin add cordova-plugin-whitelist

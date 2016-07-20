@@ -8,9 +8,10 @@ angular.module('botb_mobile', [
 	'botb_mobile.services'
 ])
 
-.run(['$ionicPlatform', '$rootScope', 'spriteshit_loader', function($ionicPlatform, $rootScope, spriteshit_loader) {
+.run(['$ionicPlatform', '$cordovaNativeAudio', '$rootScope', 'spriteshit_loader', function($ionicPlatform, $cordovaNativeAudio, $rootScope, spriteshit_loader) {
 	$rootScope.botb_base = 'http://battleofthebits.org/';
 	$rootScope.api_base = $rootScope.botb_base + 'api/v1/';
+
 	$ionicPlatform.ready(function() {
 		if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);

@@ -27,11 +27,40 @@ angular.module('botb_mobile.services', ['ngResource'])
 	return api_resource;
 })
 
-.service('player', ['$http', '$rootScope', '$location', function ($http, $rootScope, $location) {
-	this.single = function(entry_id) {
+.service('player', ['$cordovaNativeAudio', '$http', '$rootScope', '$location', function ($cordovaNativeAudio, $http, $rootScope, $location) {
+	this.single = function(entry) {
 		console.log('loading track?');
-		console.log(entry_id);
-		$location.path('/player/single/' + entry_id);
+		console.log(entry.play_url);
+		//angular.element(document).find('player').attr('entry', entry);
+		$rootScope.entry = entry;
+		$cordovaNativeAudio
+		.preloadComplex('music', entry.play_url, 1, 1)
+		.then(function(msg) {
+			console.log(msg);
+			$cordovaNativeAudio.play('music');
+		}, function(error) {
+			console.log('error: ' + error);
+		});
+		//this.entry = entry;
+		//$location.path('/player/single/' + entry_id);
+
+	};
+}])
+
+.directive('player', [function() {
+	return {
+		//transclude: true,
+		templateUrl: 'templates/player.html',
+		restrict: 'E',
+		scope: {},
+		link: function(scope, element, attributes) {
+			console.log(attributes);
+			console.log(scope.$parent.$parent);
+			scope.$watch(scope.$parent.$parent.entry, function(value) {
+				console.log('watchdog invoked');
+				console.log(value);
+			});
+		}
 	};
 }])
 
